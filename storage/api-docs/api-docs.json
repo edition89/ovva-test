@@ -1,0 +1,1027 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "AUTH API",
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/v1/comments": {
+            "post": {
+                "tags": [
+                    "Comments"
+                ],
+                "summary": "Creat comment",
+                "description": "Creat comment",
+                "operationId": "874f1f8b00690d0329ee4ecc31573ae7",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "text",
+                                    "posts_id"
+                                ],
+                                "properties": {
+                                    "text": {
+                                        "type": "string",
+                                        "example": "Первый Комментарий"
+                                    },
+                                    "posts_id": {
+                                        "type": "number",
+                                        "example": 15
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "posts_id": {
+                                            "type": "string",
+                                            "example": "15"
+                                        },
+                                        "text": {
+                                            "type": "string",
+                                            "example": "Первый Комментарий"
+                                        },
+                                        "author": {
+                                            "type": "string",
+                                            "example": "admin"
+                                        },
+                                        "id": {
+                                            "type": "number",
+                                            "example": 12
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "errors": {
+                                            "properties": {
+                                                "text": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "Поле 'text' обязательное!"
+                                                    }
+                                                },
+                                                "posts_id": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "Поле 'posts_id' обязательное!"
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Unauthenticated"
+                                        },
+                                        "Description": {
+                                            "type": "string",
+                                            "example": "Missing or Invalid Access Token"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/comments/{id}": {
+            "put": {
+                "tags": [
+                    "Comments"
+                ],
+                "summary": "Edit comment",
+                "description": "Edit comment",
+                "operationId": "b3af228ff168b3937518a458325dc913",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "text"
+                                ],
+                                "properties": {
+                                    "text": {
+                                        "type": "string",
+                                        "example": "Первый Комментарий NEW"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "posts_id": {
+                                            "type": "string",
+                                            "example": "15"
+                                        },
+                                        "text": {
+                                            "type": "string",
+                                            "example": "Первый Комментарий NEW"
+                                        },
+                                        "author": {
+                                            "type": "string",
+                                            "example": "admin"
+                                        },
+                                        "id": {
+                                            "type": "number",
+                                            "example": 12
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "errors": {
+                                            "properties": {
+                                                "text": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "Поле 'text' обязательное!"
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Unauthenticated"
+                                        },
+                                        "Description": {
+                                            "type": "string",
+                                            "example": "Missing or Invalid Access Token"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Comments"
+                ],
+                "summary": "Remove comment",
+                "description": "Remove comment",
+                "operationId": "7dcaf275761132541f46b6a85ad48b80",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "succses"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Unauthenticated"
+                                        },
+                                        "Description": {
+                                            "type": "string",
+                                            "example": "Missing or Invalid Access Token"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "fail"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/posts": {
+            "get": {
+                "tags": [
+                    "Posts"
+                ],
+                "summary": "Posts",
+                "description": "Posts list",
+                "operationId": "5a796801ed2e8bd6a779c472ca9bc119",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "path",
+                        "description": "A list of posts.",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "current_page": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "number",
+                                                        "example": ""
+                                                    },
+                                                    "title": {
+                                                        "type": "string",
+                                                        "example": ""
+                                                    },
+                                                    "content": {
+                                                        "type": "string",
+                                                        "example": ""
+                                                    },
+                                                    "created_at": {
+                                                        "type": "number",
+                                                        "example": ""
+                                                    }
+                                                },
+                                                "type": "object"
+                                            },
+                                            "example": [
+                                                {
+                                                    "id": 12,
+                                                    "title": "Первый пост",
+                                                    "content": "Текст поста",
+                                                    "poster": "/storage/images/poster_img.jpg",
+                                                    "created_at": "2023-06-25 00:58:50"
+                                                },
+                                                {
+                                                    "id": 13,
+                                                    "title": "Первый пост 2",
+                                                    "content": "Текст поста",
+                                                    "created_at": "2023-06-25 00:59:47"
+                                                }
+                                            ]
+                                        },
+                                        "first_page_url": {
+                                            "type": "string",
+                                            "example": "https://ovva.local/api/v1/posts?page=1"
+                                        },
+                                        "from": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "last_page": {
+                                            "type": "number",
+                                            "example": 3
+                                        },
+                                        "last_page_url": {
+                                            "type": "string",
+                                            "example": "https://ovva.local/api/v1/posts?page=3"
+                                        },
+                                        "links": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "url": {
+                                                        "type": "string",
+                                                        "example": ""
+                                                    },
+                                                    "label": {
+                                                        "type": "string",
+                                                        "example": ""
+                                                    },
+                                                    "active": {
+                                                        "type": "boolean",
+                                                        "example": ""
+                                                    }
+                                                },
+                                                "type": "object"
+                                            },
+                                            "example": [
+                                                {
+                                                    "url": "https://ovva.local/api/v1/posts?page=1",
+                                                    "label": "« Previous",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "https://ovva.local/api/v1/posts?page=1",
+                                                    "label": "1",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "https://ovva.local/api/v1/posts?page=2",
+                                                    "label": "2",
+                                                    "active": true
+                                                },
+                                                {
+                                                    "url": "https://ovva.local/api/v1/posts?page=3",
+                                                    "label": "3",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "https://ovva.local/api/v1/posts?page=3",
+                                                    "label": "Next »",
+                                                    "active": false
+                                                }
+                                            ]
+                                        },
+                                        "next_page_url": {
+                                            "type": "string",
+                                            "example": "https://ovva.local/api/v1/posts?page=3"
+                                        },
+                                        "path": {
+                                            "type": "string",
+                                            "example": "https://ovva.local/api/v1/posts"
+                                        },
+                                        "per_page": {
+                                            "type": "number",
+                                            "example": 2
+                                        },
+                                        "prev_page_url": {
+                                            "type": "string",
+                                            "example": "https://ovva.local/api/v1/posts?page=1"
+                                        },
+                                        "to": {
+                                            "type": "number",
+                                            "example": 4
+                                        },
+                                        "total": {
+                                            "type": "number",
+                                            "example": 6
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Posts"
+                ],
+                "summary": "Creat post",
+                "description": "Creat post",
+                "operationId": "f76a4167e19d1f4ee1c3dd53903058cb",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "title",
+                                    "content"
+                                ],
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "Первый Пост"
+                                    },
+                                    "content": {
+                                        "type": "string",
+                                        "example": "Описание первого поста"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "title": {
+                                            "type": "string",
+                                            "example": "Первый Пост"
+                                        },
+                                        "content": {
+                                            "type": "string",
+                                            "example": "Описание первого поста"
+                                        },
+                                        "id": {
+                                            "type": "number",
+                                            "example": 16
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "errors": {
+                                            "properties": {
+                                                "title": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "Поле 'title' обязательное!"
+                                                    }
+                                                },
+                                                "content": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "Поле 'content' обязательное!"
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/posts/{id}": {
+            "get": {
+                "tags": [
+                    "Posts"
+                ],
+                "summary": "Post",
+                "description": "Post data",
+                "operationId": "21c6cb4ee6782867750db8e82d9d151d",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 15
+                                        },
+                                        "title": {
+                                            "type": "string",
+                                            "example": "Первый пост"
+                                        },
+                                        "content": {
+                                            "type": "string",
+                                            "example": "Описание первого поста"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2023-06-26 15:26:01"
+                                        },
+                                        "comments": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "number",
+                                                        "example": ""
+                                                    },
+                                                    "posts_id": {
+                                                        "type": "number",
+                                                        "example": ""
+                                                    },
+                                                    "text": {
+                                                        "type": "string",
+                                                        "example": ""
+                                                    },
+                                                    "author": {
+                                                        "type": "string",
+                                                        "example": ""
+                                                    },
+                                                    "created_at": {
+                                                        "type": "number",
+                                                        "example": ""
+                                                    }
+                                                },
+                                                "type": "object"
+                                            },
+                                            "example": [
+                                                {
+                                                    "id": 2,
+                                                    "posts_id": 15,
+                                                    "author": "admin",
+                                                    "text": "Комментарийnew2",
+                                                    "created_at": "2023-06-26 15:30:46"
+                                                },
+                                                {
+                                                    "id": 3,
+                                                    "posts_id": 15,
+                                                    "author": "admin",
+                                                    "text": "Комментарий",
+                                                    "created_at": "2023-06-26 15:30:57"
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Posts"
+                ],
+                "summary": "Edit post",
+                "description": "Edit post",
+                "operationId": "b39bde5d8d21cead27dcce96c718730d",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "Первый Пост NEW"
+                                    },
+                                    "content": {
+                                        "type": "string",
+                                        "example": "Описание первого поста NEW"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 16
+                                        },
+                                        "title": {
+                                            "type": "string",
+                                            "example": "Первый Пост NEW"
+                                        },
+                                        "content": {
+                                            "type": "string",
+                                            "example": "Описание первого поста NEW"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2023-06-26 15:26:01"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Unauthenticated"
+                                        },
+                                        "Description": {
+                                            "type": "string",
+                                            "example": "Missing or Invalid Access Token"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Posts"
+                ],
+                "summary": "Remove post",
+                "description": "Remove post",
+                "operationId": "bae51f1acbd15e942312c46885286421",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "succses"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Unauthenticated"
+                                        },
+                                        "Description": {
+                                            "type": "string",
+                                            "example": "Missing or Invalid Access Token"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "fail"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/register": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Register",
+                "description": "Register user into app",
+                "operationId": "6fcc6ed59a5c00c14af5feb90c032dc1",
+                "requestBody": {
+                    "description": "Pass user credentials",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "email",
+                                    "password",
+                                    "name"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "user@mail.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password",
+                                        "example": "PassWord12345"
+                                    },
+                                    "name": {
+                                        "type": "string",
+                                        "example": "admin"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "User Account Created Successfully"
+                                        },
+                                        "access_token": {
+                                            "type": "string",
+                                            "example": "18|NYsetnjDO8HclbkubosW5ZFeVkVpGsL5L72WPzjN"
+                                        },
+                                        "token_type": {
+                                            "type": "string",
+                                            "example": "Bearer"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "errors": {
+                                            "properties": {
+                                                "email": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "'The email field is required.','The email must be a valid email address.','The email has already been taken.'"
+                                                    }
+                                                },
+                                                "password": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The password field is required."
+                                                    }
+                                                },
+                                                "name": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The name field is required."
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Log in",
+                "description": "Login user into app",
+                "operationId": "51aac885e15c79a3f73d763657f475f5",
+                "requestBody": {
+                    "description": "Pass user credentials",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "user@mail.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password",
+                                        "example": "PassWord12345"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "access_token": {
+                                            "type": "string",
+                                            "example": "18|NYsetnjDO8HclbkubosW5ZFeVkVpGsL5L72WPzjN"
+                                        },
+                                        "token_type": {
+                                            "type": "string",
+                                            "example": "Bearer"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Invalid login credentials",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Invalid login credentials"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "errors": {
+                                            "properties": {
+                                                "email": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "'The email field is required.','The email must be a valid email address.'"
+                                                    }
+                                                },
+                                                "password": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The password field is required."
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/logout": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Logout",
+                "description": "Logout user from app",
+                "operationId": "296114c756de6426e095fc876be245f9",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Succesfully Logged out"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Unauthenticated"
+                                        },
+                                        "Description": {
+                                            "type": "string",
+                                            "example": "Missing or Invalid Access Token"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
