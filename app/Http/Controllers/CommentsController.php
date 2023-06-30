@@ -38,11 +38,7 @@ class CommentsController extends Controller
      *  summary="Creat comment",
      *  description="Creat comment",
      *  tags={"Comments"},
-     *  @OA\SecurityScheme(
-     *  securityScheme="bearerAuth",
-     *  type="http",
-     *  scheme="bearer"
-     *  ),
+     *  security={{"bearerAuth":{}}},
      *  @OA\RequestBody(
      *      required=true,
      *      @OA\JsonContent(
@@ -131,11 +127,7 @@ class CommentsController extends Controller
      *  summary="Edit comment",
      *  description="Edit comment",
      *  tags={"Comments"},
-     *  @OA\SecurityScheme(
-     *  securityScheme="bearerAuth",
-     *  type="http",
-     *  scheme="bearer"
-     *  ),
+     *  security={{"bearerAuth":{}}},
      *  @OA\RequestBody(
      *      required=true,
      *      @OA\JsonContent(
@@ -198,11 +190,7 @@ class CommentsController extends Controller
      *  summary="Remove comment",
      *  description="Remove comment",
      *  tags={"Comments"},
-     *  @OA\SecurityScheme(
-     *  securityScheme="bearerAuth",
-     *  type="http",
-     *  scheme="bearer"
-     *  ),
+     *  security={{"bearerAuth":{}}},
      *  @OA\Response(
      *     response=200,
      *     description="Success",

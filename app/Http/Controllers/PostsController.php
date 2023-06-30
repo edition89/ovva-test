@@ -39,7 +39,6 @@ class PostsController extends Controller
      *                  "id": 12,
      *                  "title": "Первый пост",
      *                  "content": "Текст поста",
-     *                  "poster": "/storage/images/poster_img.jpg",
      *                  "created_at": "2023-06-25 00:58:50"
      *                  },
      *                  {
@@ -151,16 +150,13 @@ class PostsController extends Controller
     }
 
     /**
+     *
      * @OA\Post(
      *  path="/api/v1/posts",
      *  summary="Creat post",
      *  description="Creat post",
      *  tags={"Posts"},
-     *  @OA\SecurityScheme(
-     *  securityScheme="bearerAuth",
-     *  type="http",
-     *  scheme="bearer"
-     *  ),
+     *  security={{"bearerAuth":{}}},
      *  @OA\RequestBody(
      *      required=true,
      *      @OA\JsonContent(
@@ -177,6 +173,14 @@ class PostsController extends Controller
      *        @OA\Property(property="content", type="string", example="Описание первого поста"),
      *        @OA\Property(property="id", type="number", example=16),
      *     )
+     *  ),
+     *  @OA\Response(
+     *          response=401,
+     *          description="Unauthorized",
+     *          @OA\JsonContent(type="object",
+     *              @OA\Property(property="message", type="string", example="Unauthenticated"),
+     *              @OA\Property(property="Description", type="string", example="Missing or Invalid Access Token"),
+     *          )
      *  ),
      *  @OA\Response(
      *          response=422,
@@ -298,11 +302,7 @@ class PostsController extends Controller
      *  summary="Edit post",
      *  description="Edit post",
      *  tags={"Posts"},
-     *  @OA\SecurityScheme(
-     *  securityScheme="bearerAuth",
-     *  type="http",
-     *  scheme="bearer"
-     *  ),
+     *  security={{"bearerAuth":{}}},
      *  @OA\RequestBody(
      *      required=true,
      *      @OA\JsonContent(
@@ -353,11 +353,7 @@ class PostsController extends Controller
      *  summary="Remove post",
      *  description="Remove post",
      *  tags={"Posts"},
-     *  @OA\SecurityScheme(
-     *  securityScheme="bearerAuth",
-     *  type="http",
-     *  scheme="bearer"
-     *  ),
+     *  security={{"bearerAuth":{}}},
      *  @OA\Response(
      *     response=200,
      *     description="Success",

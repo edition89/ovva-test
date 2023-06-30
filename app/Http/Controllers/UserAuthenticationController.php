@@ -154,11 +154,7 @@ class UserAuthenticationController extends Controller
      *  summary="Logout",
      *  description="Logout user from app",
      *  tags={"Auth"},
-     *  @OA\SecurityScheme(
-     *  securityScheme="bearerAuth",
-     *  type="http",
-     *  scheme="bearer"
-     *  ),
+     *  security={{"bearerAuth":{}}},
      *  @OA\Response(
      *     response=200,
      *     description="Success",
