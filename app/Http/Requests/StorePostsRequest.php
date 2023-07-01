@@ -22,7 +22,8 @@ class StorePostsRequest extends ApiRequest
     public function rules()
     {
         return [
-            //
+            'title'   => 'required',
+            'content' => 'required',
         ];
     }
 
